@@ -1,0 +1,134 @@
+/* --- Base Styles (Mobile First) --- */
+* {
+    box-sizing: border-box; /* Makes padding/border part of element's total width/height */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4d4f4;
+}
+
+.container {
+    max-width: 1100px; /* Maximum width of the content */
+    margin: 0 auto; /* Center the container */
+    padding: 0 20px; /* Add padding on the sides */
+}
+
+/* --- Header --- */
+.site-header {
+    background-color: #534;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+/* --- Navigation (Flexbox) --- */
+.main-nav {
+    background-color: #744;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex; /* Activate Flexbox */
+    flex-direction: column; /* Stack items vertically on mobile */
+    align-items: center; /* Center items horizontally */
+    padding: 0.5rem 0;
+}
+
+.main-nav li {
+    width: 100%; /* Make list items take full width */
+    text-align: center; /* Center text inside list items */
+}
+
+.main-nav a {
+    display: block; /* Make the entire area clickable */
+    color: #fff;
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.main-nav a:hover {
+    background-color: #755;
+}
+
+/* --- Main Content (CSS Grid) --- */
+.main-content .container {
+    display: grid; /* Activate CSS Grid */
+    grid-template-columns: 1fr; /* Single column layout by default (mobile) */
+    gap: 20px; /* Space between grid items (sections) */
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.content-section {
+    background-color: #faf;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px; /* Slightly rounded corners */
+}
+
+.content-section h2 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* --- Footer --- */
+.site-footer {
+    background-color: #373;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 20px; /* Space above the footer */
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+/* Medium screens (Tablets, Larger Phones) - 768px and up */
+@media (min-width: 768px) {
+    /* Adjust Navigation */
+    .main-nav ul {
+        flex-direction: row; /* Arrange items horizontally */
+        justify-content: center; /* Center items along the main axis */
+    }
+
+    .main-nav li {
+        width: auto; /* Let items size based on content */
+    }
+
+    /* Adjust Main Content Grid Layout */
+    .main-content .container {
+        /* Create 2 equal columns */
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+     /* Optional: Make the first section span both columns if desired */
+     /* .content-section:first-child {
+        grid-column: span 2;
+     } */
+}
+
+/* Large screens (Desktops) - 1024px and up */
+@media (min-width: 1024px) {
+    /* Adjust Main Content Grid Layout */
+    .main-content .container {
+         /* Create 3 equal columns - Example - adjust as needed */
+         /* grid-template-columns: repeat(3, 1fr); */
+
+         /* More flexible: create columns that are at least 300px wide */
+         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    /* Optional: Header and Footer text align left */
+    .site-header .container,
+    .site-footer .container {
+        text-align: left;
+    }
+     .main-nav ul {
+         justify-content: flex-start; /* Align nav items to the left */
+     }
+}
